@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "author": "Rockfall Prediction Project",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 20, "left": 20, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "rain",
+      "top": 17.9,
+      "left": 297.4,
+      "attrs": { "value": "300" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "moisture",
+      "top": 123.5,
+      "left": 297.4,
+      "attrs": { "value": "500" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "displacement",
+      "top": 260,
+      "left": 300,
+      "attrs": { "value": "200" }
+    },
+    { "type": "wokwi-mpu6050", "id": "mpu", "top": 400, "left": 300, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": 400,
+      "left": 600,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "vibration",
+      "top": 100,
+      "left": 600,
+      "attrs": { "color": "red", "label": "VIBRATION" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "green",
+      "top": 300,
+      "left": 600,
+      "attrs": { "color": "green", "label": "LOW" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "yellow",
+      "top": 300,
+      "left": 700,
+      "attrs": { "color": "yellow", "label": "MEDIUM" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "red",
+      "top": 300,
+      "left": 800,
+      "attrs": { "color": "red", "label": "HIGH" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 200,
+      "left": 800,
+      "attrs": { "volume": "0.5" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "rain:SIG", "esp:34", "green", [] ],
+    [ "rain:VCC", "esp:3V3", "red", [] ],
+    [ "rain:GND", "esp:GND.1", "black", [] ],
+    [ "moisture:SIG", "esp:35", "green", [] ],
+    [ "moisture:VCC", "esp:3V3", "red", [] ],
+    [ "moisture:GND", "esp:GND.1", "black", [] ],
+    [ "displacement:SIG", "esp:32", "green", [] ],
+    [ "displacement:VCC", "esp:3V3", "red", [] ],
+    [ "displacement:GND", "esp:GND.1", "black", [] ],
+    [ "mpu:VCC", "esp:3V3", "red", [] ],
+    [ "mpu:GND", "esp:GND.1", "black", [] ],
+    [ "mpu:SDA", "esp:21", "blue", [] ],
+    [ "mpu:SCL", "esp:22", "orange", [] ],
+    [ "oled:VCC", "esp:5V", "red", [] ],
+    [ "oled:GND", "esp:GND.1", "black", [] ],
+    [ "oled:SDA", "esp:21", "blue", [] ],
+    [ "oled:SCL", "esp:22", "orange", [] ],
+    [ "vibration:1.l", "esp:27", "green", [] ],
+    [ "vibration:2.l", "esp:GND.1", "black", [] ],
+    [ "green:A", "esp:25", "green", [] ],
+    [ "green:C", "esp:GND.1", "black", [] ],
+    [ "yellow:A", "esp:26", "yellow", [] ],
+    [ "yellow:C", "esp:GND.1", "black", [] ],
+    [ "red:A", "esp:14", "red", [] ],
+    [ "red:C", "esp:GND.1", "black", [] ],
+    [ "buzzer:1", "esp:GND.1", "black", [] ],
+    [ "buzzer:2", "esp:13", "purple", [] ]
+  ],
+  "serialMonitor": { "display": "always" },
+  "dependencies": {}
+}

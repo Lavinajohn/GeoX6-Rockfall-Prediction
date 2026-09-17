@@ -114,3 +114,7 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+
+## Demo Video
+
+[▶️ Watch GeoX6 Demo Video](https://drive.google.com/file/d/167zKE1EJvtSkbObxhL9FfyYfoH67PoA9/view?usp=drive_link)
